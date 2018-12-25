@@ -6,7 +6,8 @@ class App extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      productItems: []
+      productItems: [],
+      filterArr: []
     }
   }
 
@@ -17,13 +18,15 @@ class App extends Component {
   }
 
   handleCheck = (e) => {
-    console.log(e);
+    const {productItems} = this.state;
+    let checkItem = productItems.filter((v, i) => v.availableSizes.includes(e.target.value));
+    this.setState({filterArr: checkItem})
   }
 
   render() {
     return (
       <div className="App">
-        <Header items={this.state.productItems} handleChecked={this.handleCheck}/>
+        <Header items={this.state.productItems} handleChecked={this.handleCheck} filterItems={this.state.filterArr}/>
       </div>
     );
   }
