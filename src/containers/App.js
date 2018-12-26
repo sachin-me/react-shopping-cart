@@ -23,10 +23,21 @@ class App extends Component {
     this.setState({filterArr: checkItem})
   }
 
+  handleClickAscending = (e) => {
+    console.log(e.target.value);
+    const {productItems} = this.state;
+    let sortedItem = (e.target.value === "Highest to Lowest") ? productItems.sort((x, y) => {
+      return y.price - x.price;
+    }) : productItems.sort((x, y) => {
+      return x.price - y.price;
+    })
+    this.setState({productItems: sortedItem});
+  }
+
   render() {
     return (
       <div className="App">
-        <Header items={this.state.productItems} handleChecked={this.handleCheck} filterItems={this.state.filterArr}/>
+        <Header items={this.state.productItems} handleChecked={this.handleCheck} filterItems={this.state.filterArr} handleClick={this.handleClickAscending} />
       </div>
     );
   }

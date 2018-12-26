@@ -4,7 +4,7 @@ import Product from '../components/Product';
 import FilteredProduct from '../components/FilteredProduct';
 
 export default function ProductContainer(props) {
-  const {productItems, filterItems} = props;
+  const {productItems, filterItems, handleClick} = props;
   let pArr;
   let fArr;
 
@@ -20,7 +20,7 @@ export default function ProductContainer(props) {
   
   return (
     <Fragment>
-      <ProductFound />
+      <ProductFound filterItems={filterItems} productItems={productItems} handleClick={handleClick} />
       {
         pArr
       }
