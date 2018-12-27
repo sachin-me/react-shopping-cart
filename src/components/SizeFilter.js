@@ -3,7 +3,7 @@ import React, {Fragment} from "react";
 export default function SizeFilter(props) {
   const {handleChecked} = props;
   return (
-    <Fragment>
+    <div className="size-filter">
       <h4 className="title">Sizes: </h4>
       <div className="filters-sizes">
         <label htmlFor="">
@@ -47,6 +47,6 @@ export default function SizeFilter(props) {
           <span className="check-mark">XXL</span>
         </label>
       </div>
-    </Fragment>
+    </div>
   )
 }

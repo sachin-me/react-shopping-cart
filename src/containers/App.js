@@ -1,13 +1,15 @@
 import React, { Component } from 'react';
-import '../style/App.css';
+import '../style/App.scss';
 import Header from '../components/Header';
+import Cart from '../components/Cart';
 
 class App extends Component {
   constructor(props) {
     super(props)
     this.state = {
       productItems: [],
-      filterArr: []
+      filterArr: [],
+      cartArr: []
     }
   }
 
@@ -34,10 +36,19 @@ class App extends Component {
     this.setState({productItems: sortedItem});
   }
 
+  addCart = (e) => {
+    let id = e.target.id;
+    this.setState({
+      cartArr: [...this.state.cartArr, this.state.productItems[id]]
+    })
+  }
+
   render() {
     return (
       <div className="App">
-        <Header items={this.state.productItems} handleChecked={this.handleCheck} filterItems={this.state.filterArr} handleClick={this.handleClickAscending} />
+        <div className="cart">{this.state.cartArr.length}</div>
+        <Header items={this.state.productItems} handleChecked={this.handleCheck} filterItems={this.state.filterArr} handleClick={this.handleClickAscending} addCart={this.addCart} />
+        <Cart cartItem={this.state.cartArr} />
       </div>
     );
   }

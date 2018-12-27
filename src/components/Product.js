@@ -1,15 +1,16 @@
 import React, {Fragment} from "react";
 
 export default function Product(props) {
-  const {item} = props;
+  const {item, addCart, id} = props;
+  
   return (
     <Fragment>
-      <div>
-        <img src={require('../products-image/11033926921508488_1.jpg')} alt="product image"/>
-        <h3>{item.title}</h3>
-        <h5>${item.price}</h5>
+      <div id={id} className="product-container">
+        <img src={require(`../products-image/${item.sku}_1.jpg`)} alt="product image" id={id} />
+        <h3 id={id}>{item.title}</h3>
+        <h5 id={id}>${item.price}</h5>
         <div className="cart-btn-div">
-          <button className="cart-btn">
+          <button id={id} className="cart-btn" onClick={(e) => addCart(e)}>
             Add to Cart
           </button>
         </div>
